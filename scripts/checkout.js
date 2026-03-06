@@ -162,3 +162,33 @@ document.querySelectorAll(".js-save-link").forEach((link) => {
     updateCartQuantity();
   });
 });
+
+document.querySelectorAll(".js-quantity-input").forEach((input) => {
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const container = input.closest(".cart-item-container");
+
+      const productId =
+        container.querySelector(".js-save-link").dataset.productId;
+
+      const newQuantity = Number(input.value);
+
+      if (newQuantity < 0 || newQuantity >= 1000) {
+        alert("Quantity must be at least 0 and less than 1000");
+        return;
+      }
+
+      updateQuantity(productId, newQuantity);
+
+      const quantityLabel = document.querySelector(
+        `.js-quantity-label-${productId}`,
+      );
+
+      quantityLabel.innerHTML = newQuantity;
+
+      container.classList.remove("is-editing-quantity");
+
+      updateCartQuantity();
+    }
+  });
+});
