@@ -15,6 +15,13 @@ describe("test suite: addToCart", () => {
     });
     loadFromStorage();
 
+    // Mock DOM
+    document.querySelector(".js-test-container").innerHTML = `
+      <select class="js-quantity-selector-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
+        <option value="1" selected>1</option>
+      </select>
+    `;
+
     addToCart("e43638ce-6aa0-4b85-b27f-e1d07eb678c6");
     expect(cart.length).toEqual(1);
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
@@ -28,8 +35,14 @@ describe("test suite: addToCart", () => {
     spyOn(localStorage, "getItem").and.callFake(() => {
       return JSON.stringify([]);
     });
-
     loadFromStorage();
+
+    // Mock DOM
+    document.querySelector(".js-test-container").innerHTML = `
+      <select class="js-quantity-selector-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
+        <option value="1" selected>1</option>
+      </select>
+    `;
 
     addToCart("e43638ce-6aa0-4b85-b27f-e1d07eb678c6");
     expect(cart.length).toEqual(1);
