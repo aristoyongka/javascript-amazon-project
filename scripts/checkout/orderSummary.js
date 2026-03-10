@@ -27,7 +27,7 @@ export function renderOrderSummary() {
     const dateString = calculateDeliveryDate(deliveryOption);
 
     cartSummaryHTML += `
-      <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+      <div class="cart-item-container js-cart-item-container js-cart-item-container-${matchingProduct.id}">
         <div class="delivery-date">Delivery date: ${dateString}</div>
 
         <div class="cart-item-details-grid">
@@ -41,7 +41,7 @@ export function renderOrderSummary() {
               ${matchingProduct.name}
             </div>
             <div class="product-price">$${formatCurrency(matchingProduct.priceCents)}</div>
-            <div class="product-quantity">
+            <div class="product-quantity js-product-quantity-${matchingProduct.id}">
               <span> 
                 Quantity: <span class="quantity-label js-quantity-label-${matchingProduct.id}">${cartItem.quantity}</span> </span>
               <span class="update-quantity-link js-update-link link-primary" data-product-id="${matchingProduct.id}">
@@ -52,7 +52,7 @@ export function renderOrderSummary() {
               data-product-id="${matchingProduct.id}">
                 Save
               </span>
-              <span class="delete-quantity-link js-delete-link link-primary" data-product-id="${matchingProduct.id}">
+              <span class="delete-quantity-link js-delete-link js-delete-link-${matchingProduct.id} link-primary" data-product-id="${matchingProduct.id}">
                 Delete
               </span>
             </div>
@@ -197,5 +197,3 @@ export function renderOrderSummary() {
     });
   });
 }
-
-renderOrderSummary();
