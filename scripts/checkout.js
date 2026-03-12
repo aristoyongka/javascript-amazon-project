@@ -8,7 +8,7 @@ import { loadCart } from "../data/cart.js";
 
 async function loadPage() {
   try {
-    throw "error1";
+    // throw "error1";
 
     await loadProductsFetch();
 
